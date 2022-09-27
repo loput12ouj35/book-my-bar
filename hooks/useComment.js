@@ -7,14 +7,9 @@ export default function useComments() {
   const [text, setText] = useState('')
   const [url, setUrl] = useState(null)
 
-  const { data: comments, mutate } = useSWR(
-    () => {
-      const query = new URLSearchParams({ url })
-      return `/api/comment?${query.toString()}`
-    },
-    {
-      initialData: [],
-    }
+  const query = new URLSearchParams({ url })
+  const { data: comments = [], mutate } = useSWR(
+    `/api/comment?${query.toString()}`
   )
 
   useEffect(() => {
