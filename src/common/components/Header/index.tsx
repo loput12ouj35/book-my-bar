@@ -6,6 +6,7 @@ import { FC } from 'react'
 import SignInButton from '../SignInButton'
 import { useHeader } from './hooks'
 
+// TODO: 스크롤 이벤트 리스너에 헤더 감추는 것 달기
 const Header: FC = () => {
   const { selectedKeys } = useHeader()
 
@@ -16,7 +17,7 @@ const Header: FC = () => {
         display: 'flex',
         alignItems:'center',
         justifyContent: 'center',
-        zIndex: 1,
+        zIndex: 800,
         width: '100%',
         background: 'white',
         boxShadow: '0 2px 8px #C8CAC9',
