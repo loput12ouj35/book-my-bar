@@ -9,15 +9,15 @@ import { Comment } from 'common/types/comment'
 
 export const useCommentList: UseCommentList = () => {
   const { getAccessTokenSilently } = useAuth0()
-  const { pathname } = useRouter()
-  const [url, setUrl] = useState(pathname)
+  const { asPath } = useRouter()
+  const [url, setUrl] = useState(asPath)
 
   const query = new URLSearchParams({ url })
   const { data: comments = [], mutate } = useCommentListQuery(query)
 
   useEffect(() => {
-    setUrl(pathname)
-  }, [pathname])
+    setUrl(asPath)
+  }, [asPath])
 
   const onDelete = async (comment: Comment) => {
     const token = await getAccessTokenSilently()

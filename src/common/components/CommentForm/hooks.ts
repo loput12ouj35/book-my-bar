@@ -8,16 +8,16 @@ import { useCommentListQuery } from 'common/_query/comments'
 
 export const useCommentForm: UseCommentForm = () => {
   const { getAccessTokenSilently } = useAuth0()
-  const { pathname } = useRouter()
-  const [url, setUrl] = useState(pathname)
+  const { asPath } = useRouter()
+  const [url, setUrl] = useState(asPath)
   const [submitting, setSubmitting] = useState(false)
 
   const query = new URLSearchParams({ url })
   const { mutate } = useCommentListQuery(query)
 
   useEffect(() => {
-    setUrl(pathname)
-  }, [pathname])
+    setUrl(asPath)
+  }, [asPath])
 
   const onSubmit = async (value: CommentForm) => {
     const token = await getAccessTokenSilently()
