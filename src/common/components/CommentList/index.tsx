@@ -1,6 +1,6 @@
-import { DeleteTwoTone } from '@ant-design/icons'
+import { DeleteOutlined } from '@ant-design/icons'
 import { useAuth0 } from '@auth0/auth0-react'
-import { Avatar, Button, Comment, Space, Tag } from 'antd'
+import { Avatar, Comment, Popconfirm, Space, Tag } from 'antd'
 import { FC } from 'react'
 
 import { useCommentList } from './hooks'
@@ -30,24 +30,23 @@ const CommentList: FC = () => {
                 )}
               </Space>
             }
-            datetime={<time>{distanceToNow(new Date(comment.createdAt))}</time>}
+            datetime={
+              <Space>
+                <time>{distanceToNow(new Date(comment.createdAt))}</time>
+                {(isAdmin || isAuthor) && (
+                  <Popconfirm
+                    title="댓글을 지울까요?"
+                    onConfirm={() => onDelete(comment)}
+                    okText="지우기"
+                    cancelText="닫기"
+                  >
+                    <DeleteOutlined />
+                  </Popconfirm>
+                )}
+              </Space>
+            }
             avatar={<Avatar src={user?.picture} />}
             content={comment.text}
-            actions={
-              isAdmin || isAuthor
-                ? [
-                    <Button
-                      key="delete"
-                      size="small"
-                      shape="round"
-                      icon={<DeleteTwoTone />}
-                      onClick={() => onDelete(comment)}
-                    >
-                      지우기
-                    </Button>,
-                  ]
-                : null
-            }
           />
         )
       })}
