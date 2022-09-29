@@ -13,6 +13,8 @@ const createComments: NextApiHandler<CommentInDB | ServerError> = async (req, re
 
   if (!url || !text || !authorization) return res.status(400).json({ message: 'Missing parameter.' })
 
+  if (text.length > 500) return res.status(400).json({ message: 'Too long text.' })
+
   try {
     const user = await getUser(authorization)
     if (!user) return res.status(400).json({ message: 'Need authorization.' })

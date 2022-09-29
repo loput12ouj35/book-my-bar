@@ -1,32 +1,39 @@
+import { Divider, Space, Typography } from 'antd'
 import Link from 'next/link'
 import { FC } from 'react'
 
 import { PostListPageProps } from './types'
 
-import Container from 'common/components/Container'
 import distanceToNow from 'lib/dateRelative'
 
 const PostListPage: FC<PostListPageProps> = (props) => {
   const { posts } = props
 
   return (
-    <Container>
+    <Space size="large" direction="vertical" style={{ width: '100%' }}>
       {posts.length ? (
-        posts.map((post) => (
-          <article key={post.slug} className="mb-10">
-            <Link as={`/posts/${post.slug}`} href="/posts/[slug]">
-              <a className="text-lg leading-6 font-bold">{post.title}</a>
-            </Link>
-            <p>{post.excerpt}</p>
-            <div className="text-gray-400">
-              <time>{distanceToNow(new Date(post.date))}</time>
-            </div>
-          </article>
+        posts.map((post, i) => (
+          <>
+            {i > 0 && <Divider />}
+            <article key={post.slug}>
+              <Space direction="vertical">
+                <Link as={`/posts/${post.slug}`} href="/posts/[slug]">
+                  <a>
+                    <Typography.Title level={3}>{post.title}</Typography.Title>
+                  </a>
+                </Link>
+                <Typography.Text>{post.excerpt}</Typography.Text>
+                <Typography.Text type="secondary">
+                  <time>{distanceToNow(new Date(post.date))}</time>
+                </Typography.Text>
+              </Space>
+            </article>
+          </>
         ))
       ) : (
-        <p>글이 없어요!</p>
+        <Typography.Text>글이 없어요!</Typography.Text>
       )}
-    </Container>
+    </Space>
   )
 }
 

@@ -1,21 +1,16 @@
+import { Space, Typography } from 'antd'
 import Image from 'next/image'
 import { FC } from 'react'
 
-import Container from 'common/components/Container'
-
 const HomePage: FC = () => {
   return (
-    <>
-      <Container>
-        <div className="space-y-6">
-          <h1 className="text-2xl font-bold">술 ㄱ_ㄱ</h1>
-          <p>그런건 너굴맨이 처리했다구~</p>
-        </div>
-      </Container>
-      <Container className="mt-20">
-        <Image src="/NeoGulMan.jpeg" alt="너굴맨" width={600} height={300} />
-      </Container>
-    </>
+    <Space size='large' direction="vertical">
+      <Typography.Title level={3}>술 ㄱ_ㄱ</Typography.Title>
+      <Typography.Text>예약은 너굴맨이 구했으니/처리했으니 안심하라구!</Typography.Text>
+      <Image src="/NeoGulMan.jpeg" alt="너굴맨" width={600} height={300} />
+      <Typography.Title level={3}>찾아오는 길</Typography.Title>
+      <Typography.Text>알아서 잘 찾아오라구!</Typography.Text>
+    </Space>
   )
 }
 

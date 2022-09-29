@@ -12,7 +12,7 @@ export default class Document extends NextDocument {
     }
 
     return (
-      <Html lang="en" className="bg-white text-gray-700 antialiased">
+      <Html>
         <Head>
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />

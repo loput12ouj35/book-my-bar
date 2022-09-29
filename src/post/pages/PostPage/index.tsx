@@ -1,12 +1,12 @@
+import { Descriptions, PageHeader, Space, Typography } from 'antd'
 import ErrorPage from 'next/error'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 
 import { PostPageProps } from './types'
 
-import Comment from 'common/components/Comment'
-import Container from 'common/components/Container'
-import distanceToNow from 'lib/dateRelative'
+import CommentForm from 'common/components/CommentForm'
+import CommentList from 'common/components/CommentList'
 
 const PostPage: FC<PostPageProps> = (props) => {
   const { post } = props
@@ -15,25 +15,26 @@ const PostPage: FC<PostPageProps> = (props) => {
 
   return noPost ? (
     <ErrorPage statusCode={404} />
+  ) : router.isFallback ? (
+    <Typography.Text disabled>로딩중...</Typography.Text>
   ) : (
-    <Container>
-      {router.isFallback ? (
-        <div>로딩중...</div>
-      ) : (
-        <div>
-          <article>
-            <header>
-              <h1 className="text-4xl font-bold">{post.title}</h1>
-              {post.excerpt ? <p className="mt-2 text-xl">{post.excerpt}</p> : null}
-              <time className="flex mt-2 text-gray-400">{distanceToNow(new Date(post.date))}</time>
-            </header>
-
-            <div className="prose mt-10" dangerouslySetInnerHTML={{ __html: post.content }} />
-          </article>
-          <Comment />
-        </div>
-      )}
-    </Container>
+    <Space size="large" direction="vertical">
+      <PageHeader onBack={() => window.history.back()} title={post.title} ghost={false} style={{ padding: 0 }}>
+        <Descriptions size="small" column={1}>
+          <Descriptions.Item>
+            <Typography.Text type="secondary">{post.excerpt}</Typography.Text>
+          </Descriptions.Item>
+          <Descriptions.Item>
+            <Typography.Text type="secondary">
+              작성일: <time>{post.date}</time>
+            </Typography.Text>
+          </Descriptions.Item>
+        </Descriptions>
+      </PageHeader>
+      <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      <CommentForm />
+      <CommentList />
+    </Space>
   )
 }
 
