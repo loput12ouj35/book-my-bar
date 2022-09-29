@@ -9,9 +9,7 @@ const deleteComments: NextApiHandler<null | ServerError> = async (req, res) => {
   const { url, comment } = req.body
   const { authorization } = req.headers
 
-  if (!url || !comment || !authorization) {
-    return res.status(400).json({ message: 'Missing parameter.' })
-  }
+  if (!url || !comment || !authorization) return res.status(400).json({ message: 'Missing parameter.' })
 
   try {
     const user = await getUser(authorization)
@@ -21,9 +19,7 @@ const deleteComments: NextApiHandler<null | ServerError> = async (req, res) => {
     const isAdmin = process.env.NEXT_PUBLIC_AUTH0_ADMIN_EMAIL === user.email
     const isAuthor = user.sub === comment.user.sub
 
-    if (!isAdmin && !isAuthor) {
-      return res.status(400).json({ message: 'Need authorization.' })
-    }
+    if (!isAdmin && !isAuthor) return res.status(400).json({ message: 'Need authorization.' })
 
     await redis.lrem(url, 0, JSON.stringify(comment))
 

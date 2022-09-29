@@ -8,9 +8,7 @@ import { ServerError } from 'common/types/serverError'
 const fetchComment: NextApiHandler<Comment[] | ServerError> = async (req, res) => {
   const { url } = req.query
 
-  if (!url || Array.isArray(url)) {
-    return res.status(400).json({ message: 'Missing parameter.' })
-  }
+  if (!url || Array.isArray(url)) return res.status(400).json({ message: 'Missing parameter.' })
 
   try {
     const rawComments = await redis.lrange(url, 0, -1)

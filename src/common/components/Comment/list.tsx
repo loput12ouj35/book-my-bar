@@ -16,7 +16,7 @@ const CommentList: FC<CommentListProps> = (props) => {
         const isAdmin = user && user.email === process.env.NEXT_PUBLIC_AUTH0_ADMIN_EMAIL
 
         return (
-          <div key={comment.created_at} className="flex space-x-4">
+          <div key={comment.createdAt} className="flex space-x-4">
             <div className="flex-shrink-0">
               <img src={comment.user.picture} alt={comment.user.name} width={40} height={40} className="rounded-full" />
             </div>
@@ -24,7 +24,7 @@ const CommentList: FC<CommentListProps> = (props) => {
             <div className="flex-grow">
               <div className="flex space-x-2">
                 <b>{comment.user.name}</b>
-                <time className="text-gray-400">{distanceToNow(comment.created_at)}</time>
+                <time className="text-gray-400">{distanceToNow(new Date(comment.createdAt))}</time>
                 {(isAdmin || isAuthor) && (
                   <button
                     className="text-gray-400 hover:text-red-500"
