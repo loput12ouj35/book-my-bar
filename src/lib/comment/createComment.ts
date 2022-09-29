@@ -1,8 +1,8 @@
 import { nanoid } from 'nanoid'
 import { NextApiHandler } from 'next'
 
-import getUser from './getUser'
-import redis from './redis'
+import getUser from '../getUser'
+import redis from '../redis'
 
 import { CommentInDB } from 'common/types/comment'
 import { ServerError } from 'common/types/serverError'

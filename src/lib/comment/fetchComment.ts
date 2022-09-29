@@ -1,6 +1,6 @@
 import { NextApiHandler } from 'next'
 
-import redis from './redis'
+import redis from '../redis'
 
 import { Comment, CommentInDB } from 'common/types/comment'
 import { ServerError } from 'common/types/serverError'

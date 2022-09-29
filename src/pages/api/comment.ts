@@ -1,8 +1,8 @@
 import { NextApiHandler } from 'next'
 
-import createComments from 'lib/createComment'
-import deleteComments from 'lib/deleteComment'
-import fetchComment from 'lib/fetchComment'
+import createComments from 'lib/comment/createComment'
+import deleteComments from 'lib/comment/deleteComment'
+import fetchComment from 'lib/comment/fetchComment'
 
 const handler: NextApiHandler = (req, res) => {
   switch (req.method) {
