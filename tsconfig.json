@@ -14,8 +14,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "incremental": true,
-    "baseUrl": ".",
-    "typeRoots": ["node_modules/@types", "_types"]
+    "baseUrl": "src",
+    "typeRoots": ["node_modules/@types", "_types"],
+    "noImplicitAny": true
   },
   "exclude": ["node_modules"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]

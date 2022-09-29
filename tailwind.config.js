@@ -1,12 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   mode: 'jit',
-  purge: [
-    './pages/**/*.js',
-    './components/**/*.js',
-    './pages/**/*.tsx',
-    './components/**/*.tsx',
-  ],
+  content: ['./src/**/*.{ts,tsx}'],
   variants: {
     extend: {
       opacity: ['disabled'],
