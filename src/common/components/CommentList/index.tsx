@@ -1,6 +1,6 @@
 import { DeleteTwoTone } from '@ant-design/icons'
 import { useAuth0 } from '@auth0/auth0-react'
-import { Avatar, Button, Comment, Space } from 'antd'
+import { Avatar, Button, Comment, Space, Tag } from 'antd'
 import { FC } from 'react'
 
 import { useCommentList } from './hooks'
@@ -20,7 +20,16 @@ const CommentList: FC = () => {
         return (
           <Comment
             key={i}
-            author={comment.user.name}
+            author={
+              <Space>
+                {comment.user.name}
+                {isAdmin && (
+                  <Tag color="blue" style={{ fontSize: 10, lineHeight: '16px' }}>
+                    관리자
+                  </Tag>
+                )}
+              </Space>
+            }
             datetime={<time>{distanceToNow(new Date(comment.createdAt))}</time>}
             avatar={<Avatar src={user?.picture} />}
             content={comment.text}
