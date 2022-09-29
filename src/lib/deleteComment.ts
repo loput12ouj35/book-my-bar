@@ -1,9 +1,11 @@
 import { NextApiHandler } from 'next'
 
-import getUser from './getUser'
-import redis from './redis'
+import getUser from '../getUser'
+import redis from '../redis'
 
-const deleteComments: NextApiHandler = async (req, res) => {
+import { ServerError } from 'common/types/serverError'
+
+const deleteComments: NextApiHandler<null | ServerError> = async (req, res) => {
   const { url, comment } = req.body
   const { authorization } = req.headers
 
@@ -12,7 +14,6 @@ const deleteComments: NextApiHandler = async (req, res) => {
   }
 
   try {
-    // verify user token
     const user = await getUser(authorization)
     if (!user) return res.status(400).json({ message: 'Invalid token.' })
     comment.user.email = user.email
@@ -24,7 +25,6 @@ const deleteComments: NextApiHandler = async (req, res) => {
       return res.status(400).json({ message: 'Need authorization.' })
     }
 
-    // delete
     await redis.lrem(url, 0, JSON.stringify(comment))
 
     return res.status(200).json(null)

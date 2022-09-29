@@ -2,9 +2,10 @@ import { NextApiHandler } from 'next'
 
 import redis from './redis'
 
-import { Comment } from 'common/types/comment'
+import { Comment, CommentInDB } from 'common/types/comment'
+import { ServerError } from 'common/types/serverError'
 
-const fetchComment: NextApiHandler = async (req, res) => {
+const fetchComment: NextApiHandler<Comment[] | ServerError> = async (req, res) => {
   const { url } = req.query
 
   if (!url || Array.isArray(url)) {
@@ -12,15 +13,8 @@ const fetchComment: NextApiHandler = async (req, res) => {
   }
 
   try {
-    // get data
-    const rawComments: string[] = await redis.lrange(url, 0, -1)
-
-    // string data to object
-    const comments: Comment[] = rawComments.map((c) => {
-      const comment: Comment = JSON.parse(c)
-      delete comment.user.email
-      return comment
-    })
+    const rawComments = await redis.lrange(url, 0, -1)
+    const comments = rawComments.map(parseComment)
 
     return res.status(200).json(comments)
   } catch (_) {
@@ -29,3 +23,10 @@ const fetchComment: NextApiHandler = async (req, res) => {
 }
 
 export default fetchComment
+
+const parseComment = (rawComment: string): Comment => {
+  const { user: _user, ...others }: CommentInDB = JSON.parse(rawComment)
+  const { email, ...user } = _user
+
+  return { ...others, user }
+}
