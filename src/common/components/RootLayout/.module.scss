@@ -1,4 +1,4 @@
-$max-root-width: 768px;
+$max-root-width: 1366px;
 
 .root:global(.ant-layout) {
   min-height: 100vh;
@@ -11,9 +11,21 @@ $max-root-width: 768px;
 }
 
 .header:global(.ant-layout-header) {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
   padding: 0;
+  background: #58181c;
 }
 
 .content:global(.ant-layout-content) {
   @extend .wrapper;
+  margin-top: 64px;
+}
+
+.footer {
+  margin-top: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

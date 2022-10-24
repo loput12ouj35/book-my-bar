@@ -1,13 +1,17 @@
-.none {
-  padding: 24px;
-}
+:global(.ant-space) {
+  &.none {
+    width: 100%;
+    position: relative;
+  }
 
-.shadow {
-  @extend .none;
-  border-radius: 4px;
-  box-shadow: 0 2px 8px #C8CAC9;
-}
+  &.shadow {
+    @extend .none;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px #C8CAC9;
+  }
 
-.line {
-  @extend .none;
+  &.line {
+    @extend .none;
+  }
+
 }

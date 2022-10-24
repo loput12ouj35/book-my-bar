@@ -6,7 +6,22 @@
   align-items: center;
 }
 
+.logo {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  top: 0;
+  margin: 8px;
+  overflow: hidden;
+
+  > * {
+    transform: translateX(-25%);
+  }
+}
+
 .menu:global(.ant-menu) {
+  margin-left: 100px;
   background: initial;
   flex: 1;
   border: 0;

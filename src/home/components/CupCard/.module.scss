@@ -1,0 +1,49 @@
+.cupCard:global(.ant-space) {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.cups {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 64px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .cups {
+    flex-direction: row;
+  }
+}
+
+.cup {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.cup1 {
+  @extend .cup;
+
+  >* {
+    transform: translate(0, -18%);
+  }
+}
+
+.cup2 {
+  @extend .cup;
+
+  >* {
+    transform: translate(-50%, -15%);
+  }
+}
+
+.cup3 {
+  @extend .cup;
+
+  >* {
+    transform: translate(-30%, -50%);
+  }
+}

@@ -4,10 +4,8 @@ import { FC } from 'react'
 import styles from './.module.scss'
 import { CommonSectionProps } from './types'
 
-const CommonSection: FC<CommonSectionProps> = ({ border = 'none', ...props }) => (
-  <div className={styles[border]}>
-    <Space size="large" direction="vertical" {...props} />
-  </div>
+const CommonSection: FC<CommonSectionProps> = ({ border = 'none', className = '', ...props }) => (
+  <Space className={`${className} ${styles[border]}`} size="large" direction="vertical" {...props} />
 )
 
 export default CommonSection

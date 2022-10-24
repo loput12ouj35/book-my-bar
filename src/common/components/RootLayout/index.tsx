@@ -1,4 +1,4 @@
-import Layout, { Content, Header } from 'antd/lib/layout/layout'
+import Layout, { Content, Footer, Header } from 'antd/lib/layout/layout'
 import { FC } from 'react'
 
 import styles from './.module.scss'
@@ -13,6 +13,7 @@ const RootLayout: FC<RootLayoutProps> = ({ Component, pageProps }) => (
     <Content className={styles.content}>
       <Component {...pageProps} />
     </Content>
+    <Footer className={styles.footer}>(푸터에 뭐 넣지...)</Footer>
   </Layout>
 )
 

@@ -1,0 +1,25 @@
+.event {
+  position: relative;
+}
+
+.descriptionWrapper {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  border: 2px solid black;
+  padding: 4px;
+  transform: scale(50%) translate(90px, 50px);
+}
+
+.description:global(.ant-space) {
+  background: black;
+  padding: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .descriptionWrapper {
+    transform: initial;
+    right: 24px;
+    bottom: 24px;
+  }
+}

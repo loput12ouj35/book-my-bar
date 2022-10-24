@@ -1,4 +1,5 @@
 import { Menu } from 'antd'
+import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
 
@@ -12,6 +13,11 @@ const Gnb: FC = () => {
 
   return (
     <div className={styles.gnb}>
+      <Link href="/">
+        <a className={styles.logo}>
+          <Image src="/NeoGulMan.jpeg" alt="너굴맨" layout="fixed" width={200} height={100} />
+        </a>
+      </Link>
       <Menu mode="horizontal" className={styles.menu} items={LINKS} selectedKeys={selectedKeys} />
       <SignInButton />
     </div>
