@@ -3,7 +3,9 @@ import { AppProps } from 'next/app'
 import { FC } from 'react'
 import { SWRConfig } from 'swr'
 
+import 'common/styles/reset.css'
 import 'antd/dist/antd.dark.css'
+import 'common/styles/font.scss'
 import { AppHead, RootLayout } from 'common/components'
 
 const App: FC<AppProps<CommonPageProps>> = (props) => {
