@@ -1,4 +1,4 @@
-.card,
+.root,
 .description {
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .card {
+  .root {
     flex-direction: row;
 
     &.reversed {

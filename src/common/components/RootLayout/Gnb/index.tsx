@@ -12,7 +12,7 @@ const Gnb: FC = () => {
   const { selectedKeys } = useGnb()
 
   return (
-    <div className={styles.gnb}>
+    <div className={styles.root}>
       <Link href="/">
         <a className={styles.logo}>
           <Image src="/NeoGulMan.jpeg" alt="너굴맨" layout="fixed" width={200} height={100} />

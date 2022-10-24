@@ -7,7 +7,7 @@ import styles from './.module.scss'
 import { CommonSection } from 'common/components'
 
 const MapCard: FC = () => (
-  <CommonSection className={styles.map}>
+  <CommonSection className={styles.root}>
     <Typography.Title level={3}>찾아오는 길</Typography.Title>
     <Typography.Text>알아서 잘 찾아오라구!</Typography.Text>
     <Image src="/NeoGulMan.jpeg" alt="너굴맨" layout="intrinsic" width={600} height={300} />

@@ -5,7 +5,7 @@ import { FC } from 'react'
 import styles from './.module.scss'
 
 const EventCard: FC = () => (
-  <div className={styles.event}>
+  <div className={styles.root}>
     <Image src="/tokaji.jpg" alt="tokaji.jpg" layout="intrinsic" width={2000} height={1500} />
     <div className={styles.descriptionWrapper}>
       <Space className={styles.description} size="large" direction="vertical">

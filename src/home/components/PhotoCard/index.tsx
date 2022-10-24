@@ -7,7 +7,7 @@ import { PhotoCardProps } from './types'
 
 const PhotoCard: FC<PhotoCardProps> = ({ reversed, img, title, descriptions, children }) => {
   return (
-    <div className={styles.card + (reversed ? ` ${styles.reversed}` : '')}>
+    <div className={styles.root + (reversed ? ` ${styles.reversed}` : '')}>
       <div className={styles.img}>
         <Image src={img} alt={img} layout="intrinsic" width={480} height={640} />
       </div>

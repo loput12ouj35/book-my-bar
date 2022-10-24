@@ -5,7 +5,7 @@ import { FC } from 'react'
 import styles from './.module.scss'
 
 const CupCard: FC = () => (
-  <Space className={styles.cupCard} size="large" direction="vertical">
+  <Space className={styles.root} size="large" direction="vertical">
     <div className={styles.cups}>
       <div className={styles.cup1}>
         <Image src="/cups.jpg" alt="cup1.jpg" layout="fixed" width={400} height={300} />
