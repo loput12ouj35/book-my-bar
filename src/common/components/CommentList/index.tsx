@@ -1,8 +1,9 @@
 import { DeleteOutlined } from '@ant-design/icons'
 import { useAuth0 } from '@auth0/auth0-react'
-import { Avatar, Comment, Popconfirm, Space, Tag } from 'antd'
+import { Avatar, Comment, Popconfirm, Skeleton, Space, Tag } from 'antd'
 import { FC } from 'react'
 
+import styles from './.module.scss'
 import { useCommentList } from './hooks'
 
 import distanceToNow from 'lib/dateRelative'
@@ -13,7 +14,7 @@ const CommentList: FC = () => {
 
   const isAdmin = user?.email === process.env.NEXT_PUBLIC_AUTH0_ADMIN_EMAIL
 
-  return (
+  return comments ? (
     <Space direction="vertical">
       {comments.map((comment, i) => {
         const isAuthor = user?.sub === comment.user.sub
@@ -24,7 +25,7 @@ const CommentList: FC = () => {
               <Space>
                 {comment.user.name}
                 {isAdmin && (
-                  <Tag color="blue" style={{ fontSize: 10, lineHeight: '16px' }}>
+                  <Tag color="blue" className={styles.adminTag}>
                     관리자
                   </Tag>
                 )}
@@ -51,6 +52,8 @@ const CommentList: FC = () => {
         )
       })}
     </Space>
+  ) : (
+    <Skeleton loading active avatar />
   )
 }
 

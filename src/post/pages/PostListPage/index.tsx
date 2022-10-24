@@ -4,13 +4,14 @@ import { FC } from 'react'
 
 import { PostListPageProps } from './types'
 
+import { CommonSection } from 'common/components'
 import distanceToNow from 'lib/dateRelative'
 
 const PostListPage: FC<PostListPageProps> = (props) => {
   const { posts } = props
 
   return (
-    <Space size="large" direction="vertical" style={{ width: '100%' }}>
+    <CommonSection>
       {posts.length ? (
         posts.map((post, i) => (
           <>
@@ -33,7 +34,7 @@ const PostListPage: FC<PostListPageProps> = (props) => {
       ) : (
         <Typography.Text>글이 없어요!</Typography.Text>
       )}
-    </Space>
+    </CommonSection>
   )
 }
 

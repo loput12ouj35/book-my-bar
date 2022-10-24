@@ -1,12 +1,12 @@
-import { Descriptions, PageHeader, Space, Typography } from 'antd'
+import { Descriptions, PageHeader, Typography } from 'antd'
 import ErrorPage from 'next/error'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 
+import styles from './.module.scss'
 import { PostPageProps } from './types'
 
-import CommentForm from 'common/components/CommentForm'
-import CommentList from 'common/components/CommentList'
+import { CommentForm, CommentList, CommonSection } from 'common/components'
 
 const PostPage: FC<PostPageProps> = (props) => {
   const { post } = props
@@ -18,8 +18,8 @@ const PostPage: FC<PostPageProps> = (props) => {
   ) : router.isFallback ? (
     <Typography.Text disabled>로딩중...</Typography.Text>
   ) : (
-    <Space size="large" direction="vertical">
-      <PageHeader onBack={() => window.history.back()} title={post.title} ghost={false} style={{ padding: 0 }}>
+    <CommonSection>
+      <PageHeader className={styles.header} onBack={() => window.history.back()} title={post.title} ghost={false}>
         <Descriptions size="small" column={1}>
           <Descriptions.Item>
             <Typography.Text type="secondary">{post.excerpt}</Typography.Text>
@@ -34,7 +34,7 @@ const PostPage: FC<PostPageProps> = (props) => {
       <div dangerouslySetInnerHTML={{ __html: post.content }} />
       <CommentForm />
       <CommentList />
-    </Space>
+    </CommonSection>
   )
 }
 

@@ -1,0 +1,13 @@
+@import '../.module.scss';
+
+.gnb {
+  @extend .wrapper;
+  display: flex;
+  align-items: center;
+}
+
+.menu:global(.ant-menu) {
+  background: initial;
+  flex: 1;
+  border: 0;
+}

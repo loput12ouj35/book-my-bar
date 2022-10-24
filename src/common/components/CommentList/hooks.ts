@@ -13,7 +13,7 @@ export const useCommentList: UseCommentList = () => {
   const [url, setUrl] = useState(asPath)
 
   const query = new URLSearchParams({ url })
-  const { data: comments = [], mutate } = useCommentListQuery(query)
+  const { data: comments, mutate } = useCommentListQuery(query)
 
   useEffect(() => {
     setUrl(asPath)

@@ -1,7 +1,7 @@
 import { Comment } from 'common/types/comment'
 
 interface UseCommentListReturn {
-  comments: Comment[]
+  comments?: Comment[]
   onDelete: (comment: Comment) => Promise<void>
 }
 

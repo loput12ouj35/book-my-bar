@@ -1,0 +1,13 @@
+.none {
+  padding: 24px;
+}
+
+.shadow {
+  @extend .none;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px #C8CAC9;
+}
+
+.line {
+  @extend .none;
+}

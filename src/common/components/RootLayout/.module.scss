@@ -1,0 +1,19 @@
+$max-root-width: 768px;
+
+.root:global(.ant-layout) {
+  min-height: 100vh;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: $max-root-width;
+  margin: 0 auto;
+}
+
+.header:global(.ant-layout-header) {
+  padding: 0;
+}
+
+.content:global(.ant-layout-content) {
+  @extend .wrapper;
+}
