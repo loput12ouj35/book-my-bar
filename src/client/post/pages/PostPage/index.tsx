@@ -6,7 +6,7 @@ import { FC } from 'react'
 import styles from './.module.scss'
 import { PostPageProps } from './types'
 
-import { CommentForm, CommentList, CommonSection } from 'common/components'
+import { CommentForm, CommentList, CommonSection } from 'client/common/components'
 
 const PostPage: FC<PostPageProps> = (props) => {
   const { post } = props

@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react'
 
 import { CommentForm, UseCommentForm } from '../CommentForm/types'
 
-import { createComment } from '_api/comment'
-import { useCommentListQuery } from 'common/_query/comments'
+import { createComment } from 'client/_api/comment'
+import { useCommentListQuery } from 'client/common/_query/comments'
 
 export const useCommentForm: UseCommentForm = () => {
   const { getAccessTokenSilently } = useAuth0()

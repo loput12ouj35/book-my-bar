@@ -1,13 +1,13 @@
 import { Divider } from 'antd'
 import { FC } from 'react'
 
+import CupCard from '../../components/CupCard'
+import EventCard from '../../components/EventCard'
+import MapCard from '../../components/MapCard'
+import PhotoCard from '../../components/PhotoCard'
 import styles from './.module.scss'
 
-import { CommonSection } from 'common/components'
-import CupCard from 'home/components/CupCard'
-import EventCard from 'home/components/EventCard'
-import MapCard from 'home/components/MapCard'
-import PhotoCard from 'home/components/PhotoCard'
+import { CommonSection } from 'client/common/components'
 
 const HomePage: FC = () => {
   return (

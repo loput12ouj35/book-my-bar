@@ -2,9 +2,9 @@ import { GetStaticProps } from 'next'
 
 import { getAllPosts } from '../../server/getPost'
 
-import { PostListPageProps } from 'post/pages/PostListPage/types'
+import { PostListPageProps } from 'client/post/pages/PostListPage/types'
 
-export { default } from 'post/pages/PostListPage'
+export { default } from 'client/post/pages/PostListPage'
 
 export const getStaticProps: GetStaticProps<PostListPageProps> = () => {
   const posts = getAllPosts<'slug' | 'title' | 'excerpt'>(['slug', 'title', 'excerpt'])

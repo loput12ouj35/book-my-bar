@@ -4,7 +4,7 @@ import { FC } from 'react'
 
 import styles from './.module.scss'
 
-import { CommonSection } from 'common/components'
+import { CommonSection } from 'client/common/components'
 
 const MapCard: FC = () => (
   <CommonSection className={styles.root}>

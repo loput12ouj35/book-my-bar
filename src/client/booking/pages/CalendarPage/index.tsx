@@ -3,9 +3,9 @@ import { Button, Calendar, Typography } from 'antd'
 import { FC } from 'react'
 
 import styles from './.module.scss'
-import { useCalendarPage } from './hookst'
+import { useCalendarPage } from './hooks'
 
-import { CommonSection } from 'common/components'
+import { CommonSection } from 'client/common/components'
 
 const CalendarPage: FC = () => {
   const { date, handleSelect } = useCalendarPage()

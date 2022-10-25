@@ -3,10 +3,11 @@ import { AppProps } from 'next/app'
 import { FC } from 'react'
 import { SWRConfig } from 'swr'
 
-import 'common/styles/reset.css'
+import { AppHead, RootLayout } from 'client/common/components'
+
 import 'antd/dist/antd.dark.css'
-import 'common/styles/font.scss'
-import { AppHead, RootLayout } from 'common/components'
+import 'client/common/styles/reset.css'
+import 'client/common/styles/font.scss'
 
 const App: FC<AppProps<CommonPageProps>> = (props) => {
   const { title } = props.pageProps

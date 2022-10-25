@@ -3,9 +3,9 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { getAllPosts, getPostBySlug } from '../../server/getPost'
 import markdownToHtml from '../../server/markdownToHtml'
 
-import { PostPageProps } from 'post/pages/PostPage/types'
+import { PostPageProps } from 'client/post/pages/PostPage/types'
 
-export { default } from 'post/pages/PostPage'
+export { default } from 'client/post/pages/PostPage'
 
 export const getStaticProps: GetStaticProps<PostPageProps> = async ({ params }) => {
   const { slug } = params

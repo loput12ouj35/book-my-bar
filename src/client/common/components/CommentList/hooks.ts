@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react'
 
 import { UseCommentList } from './types'
 
-import { deleteComment } from '_api/comment'
-import { useCommentListQuery } from 'common/_query/comments'
+import { deleteComment } from 'client/_api/comment'
+import { useCommentListQuery } from 'client/common/_query/comments'
 import { Comment } from 'common/types/comment'
 
 export const useCommentList: UseCommentList = () => {
