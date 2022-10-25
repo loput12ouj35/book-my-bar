@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 
 import { UseCommentList } from './types'
 
+import { deleteComment } from '_api/comment'
 import { useCommentListQuery } from 'common/_query/comments'
 import { Comment } from 'common/types/comment'
 
@@ -13,7 +14,7 @@ export const useCommentList: UseCommentList = () => {
   const [url, setUrl] = useState(asPath)
 
   const query = new URLSearchParams({ url })
-  const { data: comments, mutate } = useCommentListQuery(query)
+  const { data: comments, isValidating, mutate } = useCommentListQuery(query.toString())
 
   useEffect(() => {
     setUrl(asPath)
@@ -26,19 +27,9 @@ export const useCommentList: UseCommentList = () => {
       await deleteComment(url, comment, token)
       await mutate()
     } catch (err) {
-      console.log(err)
+      console.error(err)
     }
   }
 
-  return { comments, onDelete }
+  return { comments, isValidating, onDelete }
 }
-
-const deleteComment = (url: string, comment: Comment, token: string) =>
-  fetch('/api/comment', {
-    method: 'DELETE',
-    body: JSON.stringify({ url, comment }),
-    headers: {
-      Authorization: token,
-      'Content-Type': 'application/json',
-    },
-  })

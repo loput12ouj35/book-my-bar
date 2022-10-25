@@ -9,12 +9,16 @@ import { useCommentList } from './hooks'
 import distanceToNow from 'lib/dateRelative'
 
 const CommentList: FC = () => {
-  const { comments, onDelete } = useCommentList()
+  const { comments, isValidating, onDelete } = useCommentList()
   const { user } = useAuth0()
 
   const isAdmin = user?.email === process.env.NEXT_PUBLIC_AUTH0_ADMIN_EMAIL
 
-  return comments ? (
+  return isValidating ? (
+    <Skeleton loading active avatar />
+  ) : comments?.length === 0 ? (
+    <>댓글이 없는 이슈</>
+  ) : (
     <Space direction="vertical">
       {comments.map((comment, i) => {
         const isAuthor = user?.sub === comment.user.sub
@@ -52,8 +56,6 @@ const CommentList: FC = () => {
         )
       })}
     </Space>
-  ) : (
-    <Skeleton loading active avatar />
   )
 }
 

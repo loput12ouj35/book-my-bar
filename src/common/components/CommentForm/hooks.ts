@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 
 import { CommentForm, UseCommentForm } from '../CommentForm/types'
 
+import { createComment } from '_api/comment'
 import { useCommentListQuery } from 'common/_query/comments'
 
 export const useCommentForm: UseCommentForm = () => {
@@ -13,7 +14,7 @@ export const useCommentForm: UseCommentForm = () => {
   const [submitting, setSubmitting] = useState(false)
 
   const query = new URLSearchParams({ url })
-  const { mutate } = useCommentListQuery(query)
+  const { mutate } = useCommentListQuery(query.toString())
 
   useEffect(() => {
     setUrl(asPath)
@@ -35,13 +36,3 @@ export const useCommentForm: UseCommentForm = () => {
 
   return { submitting, onSubmit }
 }
-
-const createComment = (url: string, text: string, token: string) =>
-  fetch('/api/comment', {
-    method: 'POST',
-    body: JSON.stringify({ url, text }),
-    headers: {
-      Authorization: token,
-      'Content-Type': 'application/json',
-    },
-  })

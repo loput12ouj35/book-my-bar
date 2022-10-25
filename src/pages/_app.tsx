@@ -13,12 +13,7 @@ const App: FC<AppProps<CommonPageProps>> = (props) => {
 
   return (
     <Auth0Provider clientId={process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID} domain={process.env.NEXT_PUBLIC_AUTH0_DOMAIN}>
-      <SWRConfig
-        value={{
-          refreshInterval: 5000,
-          fetcher: (resource, init) => fetch(resource, init).then((res) => res.json()),
-        }}
-      >
+      <SWRConfig>
         <AppHead title={title} />
         <RootLayout {...props} />
       </SWRConfig>
