@@ -1,10 +1,10 @@
-import moment from 'moment'
+import dayjs from 'dayjs'
 import { useState } from 'react'
 
-// TODO: 타입 추가
-export const useCalendarPage = () => {
-  const [date, setDate] = useState(moment())
-  console.log(date)
+import { UseCalendarPage } from './types'
+
+export const useCalendarPage: UseCalendarPage = () => {
+  const [date, setDate] = useState(dayjs())
 
   return {
     date,

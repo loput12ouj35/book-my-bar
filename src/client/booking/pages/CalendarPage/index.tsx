@@ -1,11 +1,11 @@
 import { CalendarOutlined } from '@ant-design/icons'
-import { Button, Calendar, Typography } from 'antd'
+import { Button, Typography } from 'antd'
 import { FC } from 'react'
 
 import styles from './.module.scss'
 import { useCalendarPage } from './hooks'
 
-import { CommonSection } from 'client/common/components'
+import { Calendar, CommonSection } from 'client/common/components'
 
 const CalendarPage: FC = () => {
   const { date, handleSelect } = useCalendarPage()
