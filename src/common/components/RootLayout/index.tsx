@@ -8,7 +8,7 @@ import { RootLayoutProps } from './types'
 const RootLayout: FC<RootLayoutProps> = ({ Component, pageProps }) => (
   <Layout className={styles.root}>
     <Header className={styles.header}>
-      <Gnb />
+      <Gnb hasBigLogo={pageProps.hasBigLogo} />
     </Header>
     <Content className={styles.content}>
       <Component {...pageProps} />

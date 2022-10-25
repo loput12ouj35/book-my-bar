@@ -1,3 +1,3 @@
 import { AppProps } from 'next/app'
 
-export type RootLayoutProps = AppProps
+export type RootLayoutProps = AppProps<CommonPageProps>

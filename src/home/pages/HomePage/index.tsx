@@ -1,6 +1,8 @@
 import { Divider } from 'antd'
 import { FC } from 'react'
 
+import styles from './.module.scss'
+
 import { CommonSection } from 'common/components'
 import CupCard from 'home/components/CupCard'
 import EventCard from 'home/components/EventCard'
@@ -9,7 +11,8 @@ import PhotoCard from 'home/components/PhotoCard'
 
 const HomePage: FC = () => {
   return (
-    <CommonSection>
+    <CommonSection className={styles.root}>
+      {/* 캐러셀 들어갈 자리 */}
       <PhotoCard
         img="/tuna.jpg"
         title='예술이 가득한... "민영바"'

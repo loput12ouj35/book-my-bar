@@ -4,6 +4,7 @@
   @extend .wrapper;
   display: flex;
   align-items: center;
+  height: 100%;
 }
 
 .logo {
@@ -12,11 +13,19 @@
   height: 80px;
   border-radius: 50%;
   top: 0;
-  margin: 8px;
   overflow: hidden;
+  transform: scale(0.6);
+  margin: 8px;
+  transform-origin: top left;
+  transition: transform 0.3s ease-in-out;
 
-  > * {
+  >* {
     transform: translateX(-25%);
+  }
+
+  &.big,
+  &:hover {
+    transform: initial;
   }
 }
 

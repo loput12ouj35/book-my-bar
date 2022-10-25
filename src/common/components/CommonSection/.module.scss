@@ -14,4 +14,11 @@
     @extend .none;
   }
 
+  @media screen and (min-width: 768px) {
+    &.none,
+    &.shadow,
+    &.line {
+      padding: 16px;
+    }
+  }
 }
