@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 
-import { getAllPosts, getPostBySlug } from '../../lib/getPost'
-import markdownToHtml from '../../lib/markdownToHtml'
+import { getAllPosts, getPostBySlug } from '../../server/getPost'
+import markdownToHtml from '../../server/markdownToHtml'
 
 import { PostPageProps } from 'post/pages/PostPage/types'
 

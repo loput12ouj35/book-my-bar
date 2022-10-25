@@ -5,7 +5,7 @@ import { FC } from 'react'
 import { PostListPageProps } from './types'
 
 import { CommonSection } from 'common/components'
-import distanceToNow from 'lib/dateRelative'
+import distanceToNow from 'server/dateRelative'
 
 const PostListPage: FC<PostListPageProps> = (props) => {
   const { posts } = props

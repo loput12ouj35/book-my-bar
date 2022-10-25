@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next'
 
-import { getAllPosts } from '../../lib/getPost'
+import { getAllPosts } from '../../server/getPost'
 
 import { PostListPageProps } from 'post/pages/PostListPage/types'
 

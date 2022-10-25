@@ -6,7 +6,7 @@ import { FC } from 'react'
 import styles from './.module.scss'
 import { useCommentList } from './hooks'
 
-import distanceToNow from 'lib/dateRelative'
+import distanceToNow from 'server/dateRelative'
 
 const CommentList: FC = () => {
   const { comments, isValidating, onDelete } = useCommentList()
