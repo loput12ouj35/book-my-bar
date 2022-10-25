@@ -1,10 +1,8 @@
-import { User } from '@auth0/auth0-react'
+import { User, WithRawUser } from './user'
 
 type Timestamp = number
 
-/** 실제 DB에 저장되는 댓글은 유저의 메일 주소 정보를 포함한다. */
-export interface CommentInDB {
-  type: 'comment'
+export interface Comment {
   id: string
   /** 생성일 타임스탬프 */
   createdAt: Timestamp
@@ -12,9 +10,16 @@ export interface CommentInDB {
   url: string
   /** 댓글 내용 */
   text: string
-  user: Pick<User, 'name' | 'picture' | 'sub' | 'email'>
+  user: User
 }
 
-export interface Comment extends Omit<CommentInDB, 'user'| 'type'> {
-  user: Pick<User, 'name' | 'picture' | 'sub'>
+export type RawComment = WithRawUser<Comment>
+
+export type GetCommentsRequestQuery = Pick<Comment, 'url'>
+
+export type CreateCommentRequestBody = Pick<Comment, 'url' | 'text'>
+
+export interface DeleteCommentRequestBody {
+  url: string
+  comment: Comment
 }

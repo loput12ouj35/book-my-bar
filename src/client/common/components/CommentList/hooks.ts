@@ -13,8 +13,7 @@ export const useCommentList: UseCommentList = () => {
   const { asPath } = useRouter()
   const [url, setUrl] = useState(asPath)
 
-  const query = new URLSearchParams({ url })
-  const { data: comments, isValidating, mutate } = useCommentListQuery(query.toString())
+  const { data: comments = [], isValidating, mutate } = useCommentListQuery({ url })
 
   useEffect(() => {
     setUrl(asPath)
@@ -22,9 +21,10 @@ export const useCommentList: UseCommentList = () => {
 
   const onDelete = async (comment: Comment) => {
     const token = await getAccessTokenSilently()
+    const body = { url, comment }
 
     try {
-      await deleteComment(url, comment, token)
+      await deleteComment(body, token)
       await mutate()
     } catch (err) {
       console.error(err)

@@ -28,7 +28,11 @@ const CommentForm: FC = () => {
               { max: 500, message: '500자를 초과할 수 없습니다.' },
             ]}
           >
-            <TextArea rows={2} placeholder={isAuthenticated ? '글 남기기' : '글을 남기려면 로그인 ㄱ_ㄱ'} />
+            <TextArea
+              rows={2}
+              placeholder={isAuthenticated ? '글 남기기' : '글을 남기려면 로그인 ㄱ_ㄱ'}
+              disabled={!isAuthenticated}
+            />
           </Form.Item>
           <Form.Item wrapperCol={{ span: 16 }}>
             <Button type="primary" htmlType="submit" loading={submitting}>

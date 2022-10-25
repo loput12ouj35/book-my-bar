@@ -2,11 +2,11 @@ import { NextApiHandler } from 'next'
 
 import redis from '../redis'
 
-import { Comment, CommentInDB } from 'common/types/comment'
+import { Comment, GetCommentsRequestQuery, RawComment } from 'common/types/comment'
 import { ServerError } from 'common/types/serverError'
 
 const fetchComment: NextApiHandler<Comment[] | ServerError> = async (req, res) => {
-  const { url } = req.query
+  const { url } = req.query as GetCommentsRequestQuery
 
   if (!url || Array.isArray(url)) return res.status(400).json({ message: 'Missing parameter.' })
 
@@ -23,7 +23,7 @@ const fetchComment: NextApiHandler<Comment[] | ServerError> = async (req, res) =
 export default fetchComment
 
 const parseComment = (rawComment: string): Comment => {
-  const { user: _user, ...others }: CommentInDB = JSON.parse(rawComment)
+  const { user: _user, ...others }: RawComment = JSON.parse(rawComment)
   const { email, ...user } = _user
 
   return { ...others, user }

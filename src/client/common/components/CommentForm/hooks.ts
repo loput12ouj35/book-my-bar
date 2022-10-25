@@ -13,19 +13,20 @@ export const useCommentForm: UseCommentForm = () => {
   const [url, setUrl] = useState(asPath)
   const [submitting, setSubmitting] = useState(false)
 
-  const query = new URLSearchParams({ url })
-  const { mutate } = useCommentListQuery(query.toString())
+  const { mutate } = useCommentListQuery({ url })
 
   useEffect(() => {
     setUrl(asPath)
   }, [asPath])
 
-  const onSubmit = async (value: CommentForm) => {
+  const onSubmit = async ({ text }: CommentForm) => {
     const token = await getAccessTokenSilently()
 
     try {
       setSubmitting(true)
-      await createComment(url, value.text, token)
+      const body = { url, text }
+
+      await createComment(body, token)
       await mutate()
     } catch (err) {
       console.log(err)

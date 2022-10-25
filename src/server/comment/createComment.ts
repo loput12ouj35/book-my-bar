@@ -4,11 +4,11 @@ import { NextApiHandler } from 'next'
 import getUser from '../getUser'
 import redis from '../redis'
 
-import { CommentInDB } from 'common/types/comment'
+import { CreateCommentRequestBody, RawComment } from 'common/types/comment'
 import { ServerError } from 'common/types/serverError'
 
-const createComments: NextApiHandler<CommentInDB | ServerError> = async (req, res) => {
-  const { url, text } = req.body
+const createComments: NextApiHandler<RawComment | ServerError> = async (req, res) => {
+  const { url, text }: CreateCommentRequestBody = req.body
   const { authorization } = req.headers
 
   if (!url || !text || !authorization) return res.status(400).json({ message: 'Missing parameter.' })
@@ -21,8 +21,7 @@ const createComments: NextApiHandler<CommentInDB | ServerError> = async (req, re
 
     const { name, picture, sub, email } = user
 
-    const comment: CommentInDB = {
-      type: 'comment',
+    const comment: RawComment = {
       id: nanoid(),
       createdAt: Date.now(),
       url,
