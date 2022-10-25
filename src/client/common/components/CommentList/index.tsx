@@ -13,10 +13,11 @@ const CommentList: FC = () => {
   const { user } = useAuth0()
 
   const isAdmin = user?.email === process.env.NEXT_PUBLIC_AUTH0_ADMIN_EMAIL
+  const empty = comments.length === 0
 
-  return isValidating ? (
+  return isValidating && empty ? (
     <Skeleton loading active avatar />
-  ) : comments?.length === 0 ? (
+  ) : empty ? (
     <>댓글이 없는 이슈</>
   ) : (
     <Space direction="vertical">
