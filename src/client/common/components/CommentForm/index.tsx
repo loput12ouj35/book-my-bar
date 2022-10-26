@@ -30,7 +30,7 @@ const CommentForm: FC = () => {
             ]}
           >
             <TextArea
-              rows={2}
+              rows={4}
               placeholder={isAuthenticated ? '글 남기기' : '글을 남기려면 로그인 ㄱ_ㄱ'}
               disabled={!isAuthenticated}
             />

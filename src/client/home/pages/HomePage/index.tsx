@@ -15,7 +15,7 @@ const HomePage: FC = () => {
       {/* 캐러셀 들어갈 자리 */}
       <PhotoCard
         img="/tuna.jpg"
-        title='예술이 가득한... "민영바"'
+        title='예술이 가득한... "홈바"'
         descriptions={[
           '다양한 주종 구비... 칵테일 가.능,',
           '고급 술도 구비. 근데 그냥 준다고는 안 했다구.',
