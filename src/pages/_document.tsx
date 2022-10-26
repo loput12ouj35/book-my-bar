@@ -6,20 +6,15 @@ export default class Document extends NextDocument {
   }
 
   render() {
-    const meta = {
-      title: 'ㅁㅇㅂ 예약',
-      description: 'ㅁㅇㅂ 예약 페이지입니다.',
-    }
-
     return (
       <Html>
         <Head>
           <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
           <meta name="robots" content="nofollow, noindex" />
-          <meta name="description" content={meta.description} />
+          <meta name="description" content="예약페이지 입니다." />
+          <link id="favicon" rel="shortcut icon mask-icon" href="/favicon.jpeg"></link>
         </Head>
-
         <body>
           <Main />
           <NextScript />
