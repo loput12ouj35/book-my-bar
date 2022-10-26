@@ -13,7 +13,10 @@ export default class Document extends NextDocument {
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
           <meta name="robots" content="nofollow, noindex" />
           <meta name="description" content="예약페이지 입니다." />
-          <link id="favicon" rel="shortcut icon mask-icon" href="/favicon.jpeg"></link>
+          <link id="favicon" rel="shortcut icon mask-icon" href="/favicon.jpeg" />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+          <link href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap" rel="stylesheet" />
         </Head>
         <body>
           <Main />
