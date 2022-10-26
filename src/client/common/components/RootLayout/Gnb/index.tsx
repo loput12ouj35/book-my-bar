@@ -1,5 +1,5 @@
 import { ArrowLeftOutlined, CalendarOutlined, FileTextOutlined, HomeOutlined } from '@ant-design/icons'
-import { Button, Menu } from 'antd'
+import { Button, Menu, Typography } from 'antd'
 import Link from 'next/link'
 import { FC } from 'react'
 
@@ -9,6 +9,8 @@ import { useGnb } from './hooks'
 
 const Gnb: FC<CommonPageProps> = ({ hasBackButtonOnHeader = false }) => {
   const { selectedKeys, back } = useGnb()
+
+  const [, title, icon] = LINK_ITEMS.find(([href]) => href === selectedKeys[0]) ?? []
 
   return (
     <div className={styles.root}>
@@ -23,6 +25,10 @@ const Gnb: FC<CommonPageProps> = ({ hasBackButtonOnHeader = false }) => {
       </div>
       <div className={styles.centerWrapper}>
         <Menu mode="horizontal" className={styles.menu} items={LINKS} selectedKeys={selectedKeys} theme="dark" />
+        <Typography.Title className={styles.centerTitle} level={4}>
+          {icon}
+          {title}
+        </Typography.Title>
       </div>
       <div className={styles.rightWrapper}>
         <SignInButton />

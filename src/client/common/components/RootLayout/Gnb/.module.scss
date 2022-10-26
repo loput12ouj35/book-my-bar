@@ -23,13 +23,21 @@
   flex: 1;
 }
 
+.centerTitle:global(.ant-typography) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0
+}
+
 .backButton {
   display: flex;
   align-items: center;
-  
+
   svg {
     font-size: 20px;
-    vertical-align: top;
+    vertical-align: bottom;
   }
 }
 
@@ -48,6 +56,12 @@
 
 @media screen and (width < 768px) {
   .menu:global(.ant-menu) {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .centerTitle:global(.ant-typography) {
     display: none;
   }
 }
