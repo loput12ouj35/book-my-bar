@@ -40,7 +40,7 @@ const Gnb: FC<CommonPageProps> = ({ hasBackButtonOnHeader = false }) => {
 export default Gnb
 
 const LINK_ITEMS = [
-  ['/', '홈으로', <HomeOutlined key="icon" />],
+  ['/', '홈', <HomeOutlined key="icon" />],
   ['/booking', '예약하기', <CalendarOutlined key="icon" />],
   ['/posts', '글보기', <FileTextOutlined key="icon" />],
 ] as const
