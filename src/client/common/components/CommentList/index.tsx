@@ -11,8 +11,7 @@ import distanceToNow from 'server/dateRelative'
 const CommentList: FC = () => {
   const { comments, isValidating, onDelete } = useCommentList()
   const { user = {} } = useAuth0()
-
-  const isAdmin = user.email === process.env.NEXT_PUBLIC_AUTH0_ADMIN_EMAIL
+  const { isAdmin = false } = user
   const empty = comments.length === 0
 
   return isValidating && empty ? (

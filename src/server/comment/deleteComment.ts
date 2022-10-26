@@ -16,7 +16,7 @@ const deleteComments: NextApiHandler<null | ServerError> = async (req, res) => {
     const user = await getUser(authorization)
     if (!user) return res.status(400).json({ message: 'Invalid token.' })
 
-    const isAdmin = process.env.NEXT_PUBLIC_AUTH0_ADMIN_EMAIL === user.email
+    const { isAdmin = false } = user
     const isAuthor = user.sub === comment.user.sub
 
     if (!isAdmin && !isAuthor) return res.status(400).json({ message: 'Need authorization.' })
