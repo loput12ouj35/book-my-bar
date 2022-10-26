@@ -22,6 +22,7 @@ const CommentList: FC = () => {
     <Space direction="vertical">
       {comments.map((comment, i) => {
         const isAuthor = user.sub === comment.user.sub
+
         return (
           <Comment
             key={i}
@@ -50,7 +51,7 @@ const CommentList: FC = () => {
                 )}
               </Space>
             }
-            avatar={<Avatar src={user.picture} />}
+            avatar={<Avatar src={comment.user.picture} />}
             content={comment.text}
           />
         )
