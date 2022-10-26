@@ -1,6 +1,6 @@
 import { Space, Tag, TagProps } from 'antd'
 import dayjs, { Dayjs } from 'dayjs'
-import { ReactNode, useReducer, useState } from 'react'
+import { ReactNode, useState } from 'react'
 
 import { UseCalendarPage, UseDateCellRender } from './types'
 import { validateBookingDate } from './utils'
@@ -10,19 +10,23 @@ import { BookingHistory } from 'common/types/booking'
 
 export const useCalendarPage: UseCalendarPage = () => {
   const [date, setDate] = useState(dayjs())
-  const [open, toggleDialogOpen] = useReducer((v) => !v, false)
+  const [open, setDialogOpen] = useState(false)
 
   const bookable = validateBookingDate(date)
+
+  const openDialog = () => setDialogOpen(true)
+
+  const closeDialog = () => setDialogOpen(false)
 
   return {
     date,
     bookable,
     handleSelect: setDate,
-    handleClickButton: toggleDialogOpen,
+    handleClickButton: openDialog,
     bookingFormDialogProps: {
       date,
       open,
-      closeDialog: toggleDialogOpen,
+      closeDialog,
     },
   }
 }
