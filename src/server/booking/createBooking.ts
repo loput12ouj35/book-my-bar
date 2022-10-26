@@ -19,6 +19,9 @@ const createBooking: NextApiHandler<Booking | ServerError> = async (req, res) =>
 
   if (!validateBookingDate(_from, _to)) return res.status(400).json({ message: 'Invalid date.' })
 
+  const { extraRequest = '' } = options
+  if (extraRequest.length > 500) return res.status(400).json({ message: 'Too long text.' })
+
   try {
     const user = await getUser(authorization)
     if (!user) return res.status(400).json({ message: 'Need authorization.' })
