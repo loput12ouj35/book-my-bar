@@ -7,9 +7,9 @@ import { PostPageProps } from 'client/post/pages/PostPage/types'
 
 export { default } from 'client/post/pages/PostPage'
 
-export const getStaticProps: GetStaticProps<PostPageProps> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<PostPageProps> = async ({ params = {} }) => {
   const { slug } = params
-  const _slug = Array.isArray(slug) ? slug.join('/') : slug
+  const _slug = Array.isArray(slug) ? slug.join('/') : slug ?? ''
   const post = getPostBySlug(_slug)
   const content = await markdownToHtml(post.content || '')
 

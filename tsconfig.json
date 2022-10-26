@@ -15,7 +15,9 @@
     "isolatedModules": true,
     "incremental": true,
     "baseUrl": "src",
-    "typeRoots": ["node_modules/@types", "_types"],
+    "strictNullChecks": true,
+    "noFallthroughCasesInSwitch": true,
+    "typeRoots": ["node_modules/@types", "src/common/types"],
     "noImplicitAny": true
   },
   "exclude": ["node_modules"],

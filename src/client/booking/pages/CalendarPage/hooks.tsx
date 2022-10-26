@@ -38,7 +38,9 @@ export const useDateCellRender: UseDateCellRender = (date) => {
       <Space direction="vertical">
         {filtered.map((booking, i) => {
           const { histories } = booking
-          const { status } = histories.at(-1)
+          const { status } = histories.at(-1) ?? {}
+
+          if (!status) return null
           const [message, color] = TAG_MAP[status]
 
           return (
