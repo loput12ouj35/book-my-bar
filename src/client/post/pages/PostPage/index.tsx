@@ -19,7 +19,7 @@ const PostPage: FC<PostPageProps> = (props) => {
     <Typography.Text disabled>로딩중...</Typography.Text>
   ) : (
     <CommonSection>
-      <PageHeader className={styles.header} onBack={() => window.history.back()} title={post.title} ghost={false}>
+      <PageHeader className={styles.header} title={post.title} ghost={false}>
         <Descriptions size="small" column={1}>
           <Descriptions.Item>
             <Typography.Text type="secondary">{post.excerpt}</Typography.Text>
@@ -31,7 +31,7 @@ const PostPage: FC<PostPageProps> = (props) => {
           </Descriptions.Item>
         </Descriptions>
       </PageHeader>
-      <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      <div className={styles.markDownRoot} dangerouslySetInnerHTML={{ __html: post.content }} />
       <CommentForm />
       <CommentList />
     </CommonSection>

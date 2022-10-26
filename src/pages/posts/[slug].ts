@@ -17,6 +17,7 @@ export const getStaticProps: GetStaticProps<PostPageProps> = async ({ params = {
     props: {
       post: { ...post, content },
       title: post.title,
+      hasBackButtonOnHeader: true,
     },
   }
 }

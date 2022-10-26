@@ -1,3 +1,12 @@
-.header {
-  padding: 0;
+.markDownRoot {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media screen and (width < 768px) {
+  .header:global(.ant-page-header) {
+    margin: -8px;
+    padding: 8px;
+  }
 }

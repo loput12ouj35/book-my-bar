@@ -2,5 +2,5 @@
 
 declare interface CommonPageProps {
   title?: string
-  hasBigLogo?: boolean
+  hasBackButtonOnHeader?: boolean
 }

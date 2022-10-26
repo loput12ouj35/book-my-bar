@@ -1,7 +1,6 @@
-export type GnbProps = Pick<CommonPageProps, 'hasBigLogo'>
-
 interface UseGnbReturns {
   selectedKeys: string[]
+  back: () => void
 }
 
 export type UseGnb = () => UseGnbReturns
