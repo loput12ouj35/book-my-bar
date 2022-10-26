@@ -1,3 +1,4 @@
+import { BackTop } from 'antd'
 import Layout, { Content, Footer, Header } from 'antd/lib/layout/layout'
 import { FC } from 'react'
 
@@ -14,6 +15,7 @@ const RootLayout: FC<RootLayoutProps> = ({ Component, pageProps }) => (
       <Component {...pageProps} />
     </Content>
     <Footer className={styles.footer}>(푸터에 뭐 넣지...)</Footer>
+    <BackTop />
   </Layout>
 )
 
