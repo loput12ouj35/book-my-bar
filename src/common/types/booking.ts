@@ -4,7 +4,7 @@ type Timestamp = number
 
 export interface Booking {
   id: string
-  histories: History[]
+  histories: BookingHistory[]
   /** 예약한 시작 타임스탬프 */
   from: Timestamp
   /** 예약한 끝 타임스탬프 */
@@ -15,7 +15,7 @@ export interface Booking {
 
 export type RawBooking = WithRawUser<Booking>
 
-export interface History {
+export interface BookingHistory {
   /** 예약 상태 */
   status: 'confirmed' | 'rejected' | 'canceled' | 'pending'
   /** 상태 변경 시각 */
@@ -35,7 +35,7 @@ interface BookingOptions {
   drinkToDie: Decision
 }
 
-export interface GetBookingRequestQuery {
+export interface GetBookingsRequestQuery {
   year: number
   month: number
 }

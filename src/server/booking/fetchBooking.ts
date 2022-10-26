@@ -2,16 +2,16 @@ import { NextApiHandler } from 'next'
 
 import redis from '../redis'
 
-import { Booking, GetBookingRequestQuery, RawBooking } from 'common/types/booking'
+import { Booking, GetBookingsRequestQuery, RawBooking } from 'common/types/booking'
 import { ServerError } from 'common/types/serverError'
 
 const fetchBooking: NextApiHandler<Booking[] | ServerError> = async (req, res) => {
-  const { year, month } = req.query as unknown as GetBookingRequestQuery
+  const { year, month } = req.query as unknown as GetBookingsRequestQuery
 
   if (!year || !month) return res.status(400).json({ message: 'Missing parameter.' })
 
   try {
-    const rawBooking = await redis.lrange(`${year}-${month}`, 0, -1)
+    const rawBooking = await redis.lrange(`/booking/${year}-${month}`, 0, -1)
     const booking = rawBooking.map(parseBooking)
 
     return res.status(200).json(booking)

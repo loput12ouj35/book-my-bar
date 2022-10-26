@@ -1,3 +1,4 @@
+import { CalendarProps } from 'antd'
 import { Dayjs } from 'dayjs'
 import { Dispatch, SetStateAction } from 'react'
 
@@ -14,3 +15,5 @@ interface UseCalendarPageReturns {
 }
 
 export type UseCalendarPage = () => UseCalendarPageReturns
+
+export type UseDateCellRender = (date: Dayjs) => CalendarProps<Dayjs>['dateCellRender']

@@ -4,7 +4,7 @@ import { Button, Typography } from 'antd'
 import { FC } from 'react'
 
 import styles from './.module.scss'
-import { useCalendarPage } from './hooks'
+import { useCalendarPage, useDateCellRender } from './hooks'
 import { createButtonString } from './utils'
 
 import BookingFormDialog from 'client/booking/components/BookingFormDialog'
@@ -12,13 +12,14 @@ import { Calendar, CommonSection } from 'client/common/components'
 
 const CalendarPage: FC = () => {
   const { date, bookable, handleSelect, handleClickButton, bookingFormDialogProps } = useCalendarPage()
+  const dateCellRender = useDateCellRender(date)
   const { isAuthenticated } = useAuth0()
   const disabled = !isAuthenticated || bookable !== 'vacant'
 
   return (
     <CommonSection>
       <Typography.Title level={2}>언제 오실래요?</Typography.Title>
-      <Calendar value={date} onSelect={handleSelect} />
+      <Calendar value={date} onSelect={handleSelect} dateCellRender={dateCellRender} />
       <div className={styles.buttonWrapper}>
         <Button icon={<CalendarOutlined />} size="large" type="primary" onClick={handleClickButton} disabled={disabled}>
           {isAuthenticated ? createButtonString(bookable, date) : '예약하려면 로그인하세요.'}

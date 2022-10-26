@@ -5,7 +5,7 @@ import { NextApiHandler } from 'next'
 import getUser from '../getUser'
 import redis from '../redis'
 
-import { Booking, CreateBookingRequestBody, History, RawBooking } from 'common/types/booking'
+import { Booking, CreateBookingRequestBody, BookingHistory, RawBooking } from 'common/types/booking'
 import { ServerError } from 'common/types/serverError'
 
 const createBooking: NextApiHandler<Booking | ServerError> = async (req, res) => {
@@ -59,4 +59,4 @@ const validateBookingDate = (from: Dayjs, to: Dayjs): boolean => {
   return !past && validBoundary && !over30days && shortRange
 }
 
-const createFirstHistory = (): History => ({ status: 'pending', updatedAt: Date.now() })
+const createFirstHistory = (): BookingHistory => ({ status: 'pending', updatedAt: Date.now() })

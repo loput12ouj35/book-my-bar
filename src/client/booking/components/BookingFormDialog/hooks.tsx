@@ -7,11 +7,13 @@ import { useEffect, useState } from 'react'
 import { BookingForm, UseBookingFormDialog } from './types'
 
 import { createBooking } from 'client/_api/booking'
+import { useBookingListQuery } from 'client/common/_query/bookings'
 
 export const useBookingFormDialog: UseBookingFormDialog = (props) => {
   const { date, closeDialog } = props
   const [submitting, setSubmitting] = useState(false)
   const [form] = useForm<BookingForm>()
+  const { mutate } = useBookingListQuery(date)
   const { isAuthenticated, getAccessTokenSilently } = useAuth0()
 
   const handleOk = (): void => {
@@ -37,7 +39,7 @@ export const useBookingFormDialog: UseBookingFormDialog = (props) => {
 
     try {
       await createBooking(body, token)
-      // await mutate() // TODO: 캘린더 내용 mutate 필요
+      await mutate()
       message.success('예약신청이 성공했어요.')
       closeDialog()
     } catch (_) {
