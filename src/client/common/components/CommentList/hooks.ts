@@ -1,4 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react'
+import { message } from 'antd'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 
@@ -26,8 +27,9 @@ export const useCommentList: UseCommentList = () => {
     try {
       await deleteComment(body, token)
       await mutate()
+      message.success('댓글삭제가 성공했어요.')
     } catch (err) {
-      console.error(err)
+      message.error('댓글삭제가 실패했어요.')
     }
   }
 

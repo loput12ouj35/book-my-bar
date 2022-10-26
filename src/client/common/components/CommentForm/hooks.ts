@@ -1,4 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react'
+import { message } from 'antd'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 
@@ -22,14 +23,15 @@ export const useCommentForm: UseCommentForm = () => {
   const onSubmit = async ({ text }: CommentForm) => {
     const token = await getAccessTokenSilently()
 
-    try {
-      setSubmitting(true)
-      const body = { url, text }
+    setSubmitting(true)
+    const body = { url, text }
 
+    try {
       await createComment(body, token)
       await mutate()
-    } catch (err) {
-      console.log(err)
+      message.success('댓글생성이 성공했어요.')
+    } catch (error) {
+      message.error('댓글생성이 실패했어요.')
     } finally {
       setSubmitting(false)
     }
