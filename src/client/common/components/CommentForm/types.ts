@@ -1,3 +1,5 @@
+import { CreateCommentRequestBody } from 'common/types/comment'
+
 interface UseCommentFormReturns {
   submitting: boolean
   onSubmit: (value: CommentForm) => void
@@ -5,6 +7,4 @@ interface UseCommentFormReturns {
 
 export type UseCommentForm = () => UseCommentFormReturns
 
-export interface CommentForm {
-  text: string
-}
+export type CommentForm = Pick<CreateCommentRequestBody, 'text'>

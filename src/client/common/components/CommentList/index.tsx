@@ -10,9 +10,9 @@ import distanceToNow from 'server/dateRelative'
 
 const CommentList: FC = () => {
   const { comments, isValidating, onDelete } = useCommentList()
-  const { user } = useAuth0()
+  const { user = {} } = useAuth0()
 
-  const isAdmin = user?.email === process.env.NEXT_PUBLIC_AUTH0_ADMIN_EMAIL
+  const isAdmin = user.email === process.env.NEXT_PUBLIC_AUTH0_ADMIN_EMAIL
   const empty = comments.length === 0
 
   return isValidating && empty ? (
@@ -22,7 +22,7 @@ const CommentList: FC = () => {
   ) : (
     <Space direction="vertical">
       {comments.map((comment, i) => {
-        const isAuthor = user?.sub === comment.user.sub
+        const isAuthor = user.sub === comment.user.sub
         return (
           <Comment
             key={i}
@@ -51,7 +51,7 @@ const CommentList: FC = () => {
                 )}
               </Space>
             }
-            avatar={<Avatar src={user?.picture} />}
+            avatar={<Avatar src={user.picture} />}
             content={comment.text}
           />
         )

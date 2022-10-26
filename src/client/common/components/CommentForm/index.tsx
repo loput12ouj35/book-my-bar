@@ -4,18 +4,19 @@ import TextArea from 'antd/lib/input/TextArea'
 import { FC } from 'react'
 
 import { useCommentForm } from './hooks'
+import { CommentForm } from './types'
 
 const CommentForm: FC = () => {
   const { submitting, onSubmit } = useCommentForm()
-  const { isAuthenticated, user } = useAuth0()
+  const { isAuthenticated, user = {} } = useAuth0()
 
   return (
     <Comment
-      avatar={<Avatar src={user?.picture} />}
+      avatar={<Avatar src={user.picture} />}
       content={
         <Form
           onFinish={onSubmit}
-          initialValues={{ text: '' }}
+          initialValues={DEFAULT_FORM_VALUES}
           autoComplete="off"
           labelCol={{ span: 8 }}
           wrapperCol={{ span: 16 }}
@@ -46,3 +47,5 @@ const CommentForm: FC = () => {
 }
 
 export default CommentForm
+
+const DEFAULT_FORM_VALUES: CommentForm = { text: '' }

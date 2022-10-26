@@ -16,7 +16,9 @@ class Fetcher {
 
       return decoder(data)
     } catch (error) {
+      // 공통 에러 처리
       console.error(error)
+      throw error
     }
   }
 
