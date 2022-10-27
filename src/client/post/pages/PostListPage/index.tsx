@@ -1,6 +1,6 @@
 import { Divider, Space, Typography } from 'antd'
 import Link from 'next/link'
-import { FC } from 'react'
+import { FC, Fragment } from 'react'
 
 import { PostListPageProps } from './types'
 
@@ -14,9 +14,9 @@ const PostListPage: FC<PostListPageProps> = (props) => {
     <CommonSection>
       {posts.length ? (
         posts.map((post, i) => (
-          <>
+          <Fragment key={post.slug}>
             {i > 0 && <Divider />}
-            <article key={post.slug}>
+            <article>
               <Space direction="vertical">
                 <Link as={`/posts/${post.slug}`} href="/posts/[slug]">
                   <a>
@@ -29,7 +29,7 @@ const PostListPage: FC<PostListPageProps> = (props) => {
                 </Typography.Text>
               </Space>
             </article>
-          </>
+          </Fragment>
         ))
       ) : (
         <Typography.Text>글이 없어요!</Typography.Text>
