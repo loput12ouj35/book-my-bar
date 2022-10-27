@@ -4,8 +4,8 @@ import { FC } from 'react'
 import { AppHeadProps } from './types'
 
 const AppHead: FC<AppHeadProps> = (props) => {
-  const { title, ogImage, ogDescription } = props
-  const _title = title ? `${title} | 너굴맨` : '타이틀이 없네.. | 너굴맨'
+  const { title = '타이틀이 없네..', ogImage, ogDescription } = props
+  const _title = `${TITLE_PREFIX}${title} | 너굴맨`
 
   return (
     <Head>
@@ -20,3 +20,5 @@ const AppHead: FC<AppHeadProps> = (props) => {
 }
 
 export default AppHead
+
+const TITLE_PREFIX = process.env.NODE_ENV === 'production' ? '' : '[개발] '
