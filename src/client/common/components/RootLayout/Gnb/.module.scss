@@ -31,13 +31,10 @@
   margin: 0
 }
 
-.backButton {
-  display: flex;
-  align-items: center;
-
-  svg {
-    font-size: 20px;
-    vertical-align: bottom;
+.backButton:global(.ant-btn) {
+  // 그냥 아이콘만 추가하면 가운데 정렬을 안 해줘서, 글자 삽입하고 가려버림
+  >:not(:first-of-type) {
+    display: none;
   }
 }
 
@@ -52,6 +49,10 @@
       background-color: #aa3e19;
     }
   }
+}
+
+.temp {
+  color: #DDD
 }
 
 @media screen and (width < 768px) {

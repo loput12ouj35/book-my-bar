@@ -7,7 +7,7 @@ import { AppHead, RootLayout } from 'client/common/components'
 
 import 'antd/dist/antd.dark.css'
 import 'client/common/styles/reset.css'
-import 'client/common/styles/font.scss'
+import 'client/common/styles/antd-extension.scss'
 
 const App: FC<AppProps<CommonPageProps>> = (props) => {
   const { title } = props.pageProps

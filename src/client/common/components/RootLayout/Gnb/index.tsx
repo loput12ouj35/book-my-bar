@@ -16,11 +16,13 @@ const Gnb: FC<CommonPageProps> = ({ hasBackButtonOnHeader = false }) => {
     <div className={styles.root}>
       <div className={styles.leftWrapper}>
         {hasBackButtonOnHeader ? (
-          <Button type="text" size="large" className={styles.backButton} onClick={back}>
-            <ArrowLeftOutlined />
+          <Button className={styles.backButton} type="text" size="large" icon={<ArrowLeftOutlined />} onClick={back}>
+            뒤로
           </Button>
         ) : (
-          <>대충 로고</>
+          <Link href="/">
+            <a className={styles.temp}>대충 로고</a>
+          </Link>
         )}
       </div>
       <div className={styles.centerWrapper}>

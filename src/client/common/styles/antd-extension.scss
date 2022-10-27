@@ -1,0 +1,15 @@
+body {
+  font-family: 'Yeon Sung', sans-serif;
+  font-size: initial;
+  line-height: 1.5;
+}
+
+// 기본폰트를 연성체로 바꿔서, 아이콘과 정렬 맞추기위해 오버라이드
+.anticon svg {
+  vertical-align: -0.1em;
+}
+
+// baseline 때문에 height가 늘어나는 점을 막기 위해 오버라이드
+.ant-btn > .anticon {
+  line-height: 0;
+}
