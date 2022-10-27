@@ -1,7 +1,4 @@
-@import '../.module.scss';
-
 .root {
-  @extend .wrapper;
   display: flex;
   align-items: center;
   height: 100%;
@@ -43,5 +40,4 @@
   .menuButton:global(.ant-btn) {
     display: none;
   }
-
 }

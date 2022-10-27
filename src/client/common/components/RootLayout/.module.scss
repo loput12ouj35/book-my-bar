@@ -1,4 +1,6 @@
 $max-root-width: 1366px;
+$mobile-default-padding: 8px;
+$default-padding: 16px;
 
 .root:global(.ant-layout) {
   min-height: 100vh;
@@ -8,19 +10,21 @@ $max-root-width: 1366px;
   width: 100%;
   max-width: $max-root-width;
   margin: 0 auto;
+  padding: $mobile-default-padding;
+
+  @media screen and (min-width: 768px) {
+    padding: $default-padding;
+  }
 }
 
 .header:global(.ant-layout-header) {
-  position: fixed;
+  @extend .wrapper;
   z-index: 100;
-  width: 100%;
-  padding: 0;
   background: #58181c;
 }
 
 .content:global(.ant-layout-content) {
   @extend .wrapper;
-  margin-top: 64px;
 }
 
 .footer {
