@@ -19,7 +19,8 @@
   flex-direction: row-reverse;
 }
 
-.backButton:global(.ant-btn) {
+.backButton:global(.ant-btn),
+.menuButton:global(.ant-btn) {
 
   // 그냥 아이콘만 추가하면 가운데 정렬을 안 해줘서, 글자 삽입하고 가려버림
   >:not(:first-of-type) {
@@ -27,6 +28,20 @@
   }
 }
 
+
 .temp {
   color: #DDD
+}
+
+@media screen and (width < 768px) {
+  .signinButton {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .menuButton {
+    display: none;
+  }
+
 }

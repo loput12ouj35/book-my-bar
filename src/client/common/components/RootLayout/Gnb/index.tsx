@@ -3,6 +3,7 @@ import { Button } from 'antd'
 import Link from 'next/link'
 import { FC } from 'react'
 
+import GnbMenuButton from '../GnbMenuButton'
 import GnbNav from '../GnbNav'
 import SignInButton from '../SignInButton'
 import styles from './.module.scss'
@@ -26,7 +27,8 @@ const Gnb: FC<CommonPageProps> = ({ hasBackButtonOnHeader = false }) => {
       </nav>
       <GnbNav />
       <div className={styles.rightWrapper}>
-        <SignInButton />
+        <GnbMenuButton className={styles.menuButton} />
+        <SignInButton className={styles.signinButton} />
       </div>
     </div>
   )
