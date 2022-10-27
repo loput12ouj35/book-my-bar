@@ -2,7 +2,7 @@ import { nanoid } from 'nanoid'
 import { NextApiHandler } from 'next'
 
 import getUser from '../getUser'
-import redis from '../redis'
+import { redis } from '../redis'
 
 import { CreateCommentRequestBody, RawComment } from 'common/types/comment'
 import { ServerError } from 'common/types/serverError'

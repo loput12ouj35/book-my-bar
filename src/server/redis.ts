@@ -1,33 +1,10 @@
-import Redis from 'ioredis'
+import { Ratelimit } from '@upstash/ratelimit'
+import { Redis } from '@upstash/redis'
 
-const fixUrl = (url: string): string => {
-  if (!url) {
-    return ''
-  }
-  if (url.startsWith('redis://') && !url.startsWith('redis://:')) {
-    return url.replace('redis://', 'redis://:')
-  }
-  if (url.startsWith('rediss://') && !url.startsWith('rediss://:')) {
-    return url.replace('rediss://', 'rediss://:')
-  }
-  return url
-}
+export const redis = Redis.fromEnv()
 
-class ClientRedis {
-  private static instance: Redis
-
-  constructor() {
-    throw new Error('Use Singleton.getInstance()')
-  }
-
-  static getInstance() {
-    if (!ClientRedis.instance) {
-      ClientRedis.instance = new Redis(fixUrl(process.env.REDIS_URL))
-    }
-    return ClientRedis.instance
-  }
-}
-
-const redis = ClientRedis.getInstance()
-
-export default redis
+// Create a new ratelimiter, that allows 5 requests per 5 seconds
+export const ratelimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.fixedWindow(5, '5 s'),
+})
