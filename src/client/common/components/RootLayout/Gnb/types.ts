@@ -1,5 +1,4 @@
 interface UseGnbReturns {
-  selectedKeys: string[]
   back: () => void
 }
 

@@ -19,50 +19,14 @@
   flex-direction: row-reverse;
 }
 
-.centerWrapper {
-  flex: 1;
-}
-
-.centerTitle:global(.ant-typography) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin: 0
-}
-
 .backButton:global(.ant-btn) {
+
   // 그냥 아이콘만 추가하면 가운데 정렬을 안 해줘서, 글자 삽입하고 가려버림
   >:not(:first-of-type) {
     display: none;
   }
 }
 
-.menu:global(.ant-menu) {
-  background: initial;
-  border: 0;
-
-  &:global(.ant-menu.ant-menu-dark) {
-    background-color: initial;
-
-    :global(.ant-menu-item-selected) {
-      background-color: #aa3e19;
-    }
-  }
-}
-
 .temp {
   color: #DDD
-}
-
-@media screen and (width < 768px) {
-  .menu:global(.ant-menu) {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .centerTitle:global(.ant-typography) {
-    display: none;
-  }
 }
