@@ -9,6 +9,8 @@ const AppHead: FC<AppHeadProps> = (props) => {
 
   return (
     <Head>
+      {/** https://nextjs.org/docs/messages/no-document-viewport-meta */}
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
       <title>{_title}</title>
       <meta property="og:title" content={_title} />
       {ogImage && <meta property="og:image" content={ogImage} />}

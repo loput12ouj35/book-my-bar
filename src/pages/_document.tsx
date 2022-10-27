@@ -10,7 +10,6 @@ export default class Document extends NextDocument {
       <Html>
         <Head>
           <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
           <meta name="robots" content="nofollow, noindex" />
           <meta name="description" content={DESCRIPTION} />
           <meta property="og:type" content="website" />
