@@ -2,5 +2,7 @@
 
 declare interface CommonPageProps {
   title?: string
+  ogImage?: string
+  ogDescription?: string
   hasBackButtonOnHeader?: boolean
 }

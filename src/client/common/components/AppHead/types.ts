@@ -1,1 +1,1 @@
-export type AppHeadProps = Pick<CommonPageProps, 'title'>
+export type AppHeadProps = Pick<CommonPageProps, 'title' | 'ogImage' | 'ogDescription'>
