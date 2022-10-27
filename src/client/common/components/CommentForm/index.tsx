@@ -33,6 +33,8 @@ const CommentForm: FC = () => {
               rows={4}
               placeholder={isAuthenticated ? '글 남기기' : '글을 남기려면 로그인 ㄱ_ㄱ'}
               disabled={!isAuthenticated}
+              showCount
+              maxLength={500}
             />
           </Form.Item>
           <Form.Item wrapperCol={{ span: 16 }}>

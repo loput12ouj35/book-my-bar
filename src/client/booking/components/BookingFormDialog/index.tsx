@@ -59,7 +59,7 @@ const BookingFormDialog: FC<BookingFormDialogProps> = (props) => {
           name={['options', 'extraRequest']}
           rules={[{ max: 200, message: '200자를 초과할 수 없습니다.' }]}
         >
-          <TextArea rows={4} placeholder="요청사항이나 전달할 메모를 적어주세요." />
+          <TextArea rows={4} placeholder="요청사항이나 전달할 메모를 적어주세요." showCount maxLength={200} />
         </Form.Item>
       </Form>
       <Tags dateString={dateString} />
